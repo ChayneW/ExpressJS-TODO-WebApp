@@ -296,7 +296,7 @@ app.post('/deleteall', function(req, res) {
 
 let port = prot = process.env.PORT
 if (port == null || port == '') {
-    port = 8000
+    port = 3000
 }
 
 
