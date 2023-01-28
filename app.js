@@ -24,7 +24,7 @@ app.use(express.static('public'))
 
 mongoose.set('strictQuery', false);
 
-mongoose.connect(process.env.MONGODB, {useNewUrlParser: true}).catch(err => console.log(err));
+mongoose.connect(process.env.MONGODB, {useNewUrlParser: true}).catch(err => console.log(`triggered mongo server .catch: ${err}`));
 
 
 // DB Schema creation:
