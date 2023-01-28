@@ -1,0 +1,315 @@
+
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+
+body {
+  padding-top: 56px;
+}
+
+.add-div{
+  margin-top: 50px;
+ }
+
+@media (max-width: 991.98px) {
+  .offcanvas-collapse {
+    position: fixed;
+    top: 56px; /* Height of navbar */
+    bottom: 0;
+    left: 100%;
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    overflow-y: auto;
+    visibility: hidden;
+    background-color: #343a40;
+    transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+  }
+  .offcanvas-collapse.open {
+    visibility: visible;
+    transform: translateX(-100%);
+  }
+}
+
+.nav-scroller .nav {
+  color: rgba(255, 255, 255, .75);
+}
+
+.nav-scroller .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: #6c757d;
+}
+
+.nav-scroller .nav-link:hover {
+  color: #007bff;
+}
+
+.nav-scroller .active {
+  font-weight: 500;
+  color: #343a40;
+}
+
+.sidebar {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+.bg-purple {
+  background-color: #6f42c1;
+}
+
+.container {
+  /* display: flex; */
+   /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+  /* justify-content: space-evenly;  */
+  flex-flow: wrap;
+  justify-content: center; 
+  gap: 50px 50px;
+}
+
+.request-box {
+  flex-direction: column;
+  /* flex-flow: wrap; */
+  justify-content: center;
+  align-items: center;
+  gap: 10px 10px; 
+}
+
+#request-btn-get {
+  flex-direction: column;
+  /* flex-flow: wrap; */
+  justify-content: center;
+  align-items: center;
+  gap: 10px 10px; 
+}
+
+#success-button {
+  justify-content: center;
+  align-items: center;
+  gap: 10px 10px; 
+}
+
+/* ------------------ */
+
+
+
+/* ------------------
+  black card; https://uiverse.io/Yaseen549/chilly-dragon-64
+*/
+
+/* MAIN CARD FORMAT */
+/* .card { */
+  /* position: relative; */
+  /* display: flex;
+  justify-content: center; */
+  /* align-items: center;  */
+  /* ------- */
+
+  /* width: 300px;
+  height: 260px;
+  border-radius: 30px;
+  background: #212121;
+  box-shadow: 15px 15px 30px rgb(25, 25, 25),
+              -15px -15px 30px rgb(60, 60, 60); */
+  
+  /* margin: auto; */
+ /* } */
+ 
+
+/* CARD TEST 2 */
+
+/* .card2 {
+  width: 190px;
+  height: 254px;
+  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+  border-radius: 20px;
+  transition: all .3s;
+ }
+ 
+ .card3 {
+  width: 190px;
+  height: 254px;
+  background-color: #1a1a1a;
+  transition: all .2s;
+ }
+ 
+ .card3:hover {
+  transform: scale(0.98);
+  border-radius: 20px;
+ }
+ 
+ .card2:hover {
+  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+ } */
+
+/* CARD TEST 3 */
+.card-test-3 {
+  --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+  width: 190px;
+  height: 254px;
+  padding: 5px;
+  border-radius: 1rem;
+  overflow: visible;
+  background: #f7ba2b;
+  background: var(--background);
+  position: relative;
+  z-index: 1;
+ }
+ 
+ .card-test-3::after {
+  position: absolute;
+  /* content: ""; */
+  top: 30px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.8);
+  filter: blur(25px);
+  background: #f7ba2b;
+  background: var(--background);
+  transition: opacity .5s;
+ }
+ 
+ .card-test-3-info {
+  --color: #181818;
+  background: var(--color);
+  color: var(--color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  border-radius: .7rem;
+ }
+ 
+ .card-test-3 .title {
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-align: center;
+  margin: auto;
+ }
+ 
+ /*Hover*/
+ .card-test-3:hover::after {
+  opacity: 0;
+ }
+ 
+ .card-test-3:hover .card-info {
+  color: #f7ba2b;
+  transition: color 1s;
+ }
+
+
+ /* CARD BLUE: */
+
+ .card-blue {
+  width: 190px;
+  height: 254px;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+
+  border-radius: 1rem;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+
+   /* --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%); */
+  /* width: 190px;
+  height: 254px; */
+  /* padding: 5px; */
+  /* background: #f7ba2b; */
+  /* background: var(--background); */
+ }
+ 
+ .card-blue__content .title {
+  background: rgb(5, 6, 45);
+  border-radius: 17px;
+  width: 100%;
+  height: 100%;
+
+  font-weight: bold;
+  letter-spacing: .1em;
+  text-align: center;
+  margin: auto;
+ }
+
+/* CREATE INPUT FORM HERE!! */
+.create_form_group {
+  position: relative;
+  padding: 20px 0 0;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 180px;
+}
+
+.create_form_field {
+  font-family: inherit;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 17px;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.create_form_field::placeholder {
+  color: transparent;
+}
+
+.create_form_field:placeholder-shown ~ .create_form_label {
+  font-size: 17px;
+  cursor: text;
+  top: 20px;
+}
+
+.create_form_label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: #9b9b9b;
+  pointer-events: none;
+}
+
+.create_form_field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #116399, #38caef);
+  border-image-slice: 1;
+}
+
+.create_form_field:focus ~ .form_label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 17px;
+  color: #38caef;
+  font-weight: 700;
+}
+
+/* reset input */
+.create_form_field:required, .create_form_field:invalid {
+  box-shadow: none;
+}

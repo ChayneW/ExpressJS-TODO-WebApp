@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Daily TODO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body>
+  
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+      <div class="container-fluid">
+    
+        <!-- LISTTITLE HERE!!!! Title of pg ex Date...-->
+        <a class="navbar-brand" href="/">Dashboard</a>
+    
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+      </div>
+      <!-- </div> -->
+    </nav>
+    
+    <hr>
+    
+    <h1 align="center">Categories:</h1>
+    <br>
+  <!-- Container starts here: -->
+      <!-- CARD STARTS HERE: -->
+
+  <div class="container container-fluid d-flex">
+
+    <!-- CREATE NEW TODO -->
+    <div class="request-box d-flex">
+
+      <form action="/create" method="post">
+
+        <div class="col-md-4 card-blue">
+          <div class="card-body card-test-3-info">
+          <div class="create_form_group field">
+            <label class="create_form_label" for="name">New TODO:</label>
+
+<!-- newTableCreate HERE!!!! -->
+            <input required="" placeholder="Name" class="create_form_field" type="text" name="newTableCreate">  
+        </div>  
+          </div>
+        </div>
+
+        <div>
+<!-- newTableAdded HERE!!:  type:STRING -> /create -->
+            <button id='create-button' class="btn btn-outline-success" type="submit" name="newTableAdded">create</button>
+        </form>  
+      </div>
+    </div>
+
+    <!-- CARD TEST 3 Magic orange -->
+      <% cardItem.forEach(function(newCardNameItem){ %>
+
+        <div class="request-box d-flex">
+        <form action="/" method="post">
+          <div class="col-md-4 card-test-3">
+            <div class="card-body card-test-3-info">
+
+<!-- newCardNameItem LOOP HERE!!!! -->
+              <h5 class="title"><%= newCardNameItem.name %></h5>
+              
+              
+<!-- hiddenCardName HERE!!! ID or NAME...-->
+            <button id="request-btn-get" class="btn stretched-link" type="submit" name="hiddenCardName" value=<%= newCardNameItem.name %>></button>
+            
+            <input type="hidden" name="cardHiddenID" value="<%= newCardNameItem.id %>"></input>
+
+            </div>
+          </div>
+        </form>
+
+<!-- HIDDEN Del List Name HERE!!:  -->
+  <!-- cardNameDel HERE!!!!1 -->
+          <form action="/deleteall" method="post">
+              <button class="btn btn-outline-danger" type="submit" name="cardNameDEL" value=<%= newCardNameItem.name %>>delete</button>
+          </form>  
+        </div>
+      
+        <% }) %>           
+            
+      </div>
+    </div>
+</body>
+</html>
+
+<%-include('footer')%>

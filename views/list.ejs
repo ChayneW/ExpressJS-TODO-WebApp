@@ -1,0 +1,81 @@
+<%-include('header')%>
+
+<hr>
+
+ <!-- navbar-dark bg-dark -->
+ <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark"  aria-label="Main navigation"> 
+    <div class="container-fluid">
+  
+      <div class="container-fluid">
+  
+      <!-- <a class="navbar-brand" href="/homenew"> < %= listTitle %></a> -->
+      <a class="navbar-brand" href="/">Home</a>
+    </div>
+  
+      <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+  
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+    <!-- </div> -->
+  </nav>
+  
+  <hr>
+  
+  <div class="my-3 p-3 bg-body rounded shadow-sm"> <!--my-3 p-3 bg-body rounded shadow-sm -->
+      <h1 class="border-bottom"><%= listTitle %> TODO's</h1> 
+  
+    <!-- FOREACH LOOP EJS HERE!!! -->
+    <!-- NEWITEMADD HERE!!!! -->
+      <% newItemAdd.forEach(function(newItem) { %>
+  
+        <!-- DELETE FORM HERE!!!! -->
+      <form action="/delete" method="post">
+        <div class="d-block"> <!--d-flex pt-3 -->
+        
+    <!-- NEWITEMADD HERE!!!! -->
+        
+        <li> <%= newItem.name %>
+          <div class="d-block text-end">
+
+            <!-- DELETE BTN HERE!!!
+              - by using button's 'name' attr, passes OBJ {name:value},
+              - tapping into newItem EJS item's id to send into backend for mongoDB retrieval 
+            -->
+
+    <!-- listItemBeingSelected HERE!!1 -->
+            <button class="btn btn-sm btn-outline-danger" type="submit" name="listItemBeingSelected" value=<%= newItem.id %>>Delete</button>
+          </div>
+
+    <!-- hiddenDelListName HERE!!:  -->
+        <input type="hidden" name="hiddenDelListName" value="<%= listTitle %>"></input> 
+        </li>
+        <hr>
+      </div>
+    </form>
+
+    <% }) %>
+  
+<!-- NEWITEM VAR HERE!!! -->
+      <div class="container-fluid add-div">
+      <form class=" " action="/addNote" method="post">
+          <input class="form-control me-2" type="text" name="newItem" placeholder="Add item HERE!!" autocomplete="off">
+
+<!-- newItemHomeList LISTTITLE HERE!!! RES-->
+          <button class="btn btn-outline-success" type="submit" name="newItemHomeList" value=<%= listTitle %>>Add</button> <!--  -->
+      </form>
+    </div>
+  
+  </div>
+  
+  </main>
+  
+  
+  <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  
+  <%-include('footer')%>
