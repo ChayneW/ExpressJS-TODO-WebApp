@@ -294,6 +294,12 @@ app.post('/deleteall', function(req, res) {
 })
 
 
-app.listen(3000, function() {
+let port = prot = process.env.PORT
+if (port == null || port == '') {
+    port = 8000
+}
+
+
+app.listen(port, function() {
     console.log('server is listening on port 3000')
 })
