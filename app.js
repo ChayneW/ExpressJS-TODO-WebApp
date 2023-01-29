@@ -89,14 +89,22 @@ app.get('/', function(req, res){
             // forEach loop finding subdocs names:
             // const cardTitles = foundItems
             console.log('(/) GET for Loop:')
+            
+            // let cardsAmount = foundItems.length
+            console.log('card amount calculation...')
+            console.log(cardsAmount) 
+
             foundItems.forEach(function(item){
                 console.log(item)
-            })    
+            })
+               
         }
 
         console.log('rendering homenew.GET...')
         console.log('sending db TABLES JSON to homescreen (/)...\n')
-        res.render('home.ejs', {cardItem: foundItems})
+        var cardsAmount = foundItems.length
+
+        res.render('home.ejs', {cardItem: foundItems, cardsTotal: cardsAmount})// cardsTotal: cardsAmount})
     })
 })
 
@@ -106,6 +114,8 @@ app.get('/', function(req, res){
 app.post('/', function(req, res){
 
     // home.ejs -> URL -> app.post(/add/CustomCardName..)
+
+    // const cardTot = req.body.cardsHiddenJSON
 
     const cardNameChosen = req.body.hiddenCardName
     
@@ -165,9 +175,17 @@ app.post('/create', function(req, res) {
 
     console.log(`grabbing text from home input: ${req.body.newTableCreate}`)
 
+    // representation of cards in home as a string == '3'
+    console.log(`totalCards from html: ${req.body.cardTotalHidden}`)
+
+    // convert string to number;
+    let totalCards = parseInt(req.body.cardTotalHidden)
+    console.log(totalCards)
+    console.log(typeof totalCards)
+
     // type:STRING
     const newTableName = _.capitalize(req.body.newTableCreate)
-    console.log(` lodash() kicking in: ${newTableName}\n`)
+    console.log(`lodash() kicking in: ${newTableName}\n`)
 
     // string conversion to add dash:
     const adjCardNameChosen = newTableName.replace(/\s/g , "-")
@@ -179,18 +197,34 @@ app.post('/create', function(req, res) {
 
                 // creating new path and DB:
                 console.log("customListName()... Doesnt exist\n")
+                console.log('foundAList loop:')
+                // console.log(foundAList)
 
-                // dynamic table creation
-                const list = new custList({
+                // #### DB COUNT CHECK HERE: 
+                console.log('checking length within checking for db exists:')
+
+                if (totalCards > 5 ){
+                    console.log('cards at home screen more than 6.....')
+                    res.redirect('/')
+
+                }
+                else {
+                    console.log('cards at home screen not more than 6.....')
+                    // dynamic table creation
+                
+                    const list = new custList({
                     name: adjCardNameChosen,
                     items: defaultItems,
                 })
+
                 list.save()
                 console.log('checking db from /create...')
                 // checkDB()
 
                 // -> /add/:customListName()  string with '-'
                 res.redirect('/add/' + adjCardNameChosen)
+                }
+                
                 
             } else {
                 //show an existing list:
@@ -221,7 +255,7 @@ app.post('/addNote', function(req, res) {
     // data check:
     console.log(`note written: ${itemName}`)
     console.log(`Profile of item saved: ${newItemProfile}`)
-    console.log(hiddenID)
+    // console.log(hiddenID)
     
     // creating new Item doc for MongoDB:
     const itemNew = new custList({
@@ -237,10 +271,23 @@ app.post('/addNote', function(req, res) {
         else {
             console.log('no error...')
             console.log('tapping into foundlist in custList:')
-            console.log(foundList) 
+            console.log(foundList)
+            console.log('\n')
+            console.log('items in list:')
+            const itemLength = foundList.items.length
+            console.log(itemLength)
 
-            foundList.items.push(itemNew)
-            foundList.save()
+            if (itemLength > 5) {
+                console.log('itemLength greater than 5')
+                custList.deleteMany({})
+            }
+            else {
+                console.log('itemLength not greater than 5')
+                foundList.items.push(itemNew)
+                foundList.save()
+            }
+
+        console.log('outside of itemLength >= conditionals\n')  
         }
         res.redirect('/add/' + newItemProfile)
     })

@@ -3,7 +3,7 @@ body {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 
-h1 {
+h1,p {
   text-align: center;
 }
 

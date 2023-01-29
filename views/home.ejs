@@ -33,7 +33,7 @@
   <div class="container container-fluid d-flex">
     
     <div class="text-box container container-fluid">
-      <h1>Lists:</h1>
+      <h1>Lists:</h1><hr><p>(App wont allow more than 6 tables active)</p></hr>
     </div>
 
     <!-- CREATE NEW TODO -->
@@ -49,7 +49,10 @@
 
 <!-- newTableCreate HERE!!!! -->
             <input required="" placeholder="Name" class="create_form_field" type="text" name="newTableCreate">  
-        </div>  
+            
+<!-- cardsHiddenJSON HERE!!! -->
+            <input type="hidden" name="cardTotalHidden" value="<%=cardsTotal%>"></input>
+          </div>  
           </div>
         </div>
 
