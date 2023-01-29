@@ -75,8 +75,7 @@ checkDB()
 
 
 //----------------------------
-// Homenew Home screen:
-// HOMENEW:
+// Home screen:
 
 app.get('/', function(req, res){
     

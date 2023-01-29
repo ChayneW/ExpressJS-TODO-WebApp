@@ -1,30 +1,16 @@
 <%-include('header')%>
 
-<hr>
-
- <!-- navbar-dark bg-dark -->
- <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark"  aria-label="Main navigation"> 
+ <nav class="fixed-top navbar navbar-expand-lg navbar-dark banner" style="background-color: #1DB9C3"; aria-label="Main navigation"> 
     <div class="container-fluid">
   
       <div class="container-fluid">
   
-      <!-- <a class="navbar-brand" href="/homenew"> < %= listTitle %></a> -->
       <a class="navbar-brand" href="/">Home</a>
     </div>
-  
-      <!-- <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
-  
-  
-        <!-- <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form> -->
-    </div>
-    <!-- </div> -->
-  </nav>
-  
+
+  </div>
+</nav>
+
   <hr>
   
   <div class="my-3 p-3 bg-body rounded shadow-sm"> <!--my-3 p-3 bg-body rounded shadow-sm -->
@@ -42,11 +28,6 @@
         
         <li> <%= newItem.name %>
           <div class="d-block text-end">
-
-            <!-- DELETE BTN HERE!!!
-              - by using button's 'name' attr, passes OBJ {name:value},
-              - tapping into newItem EJS item's id to send into backend for mongoDB retrieval 
-            -->
 
     <!-- listItemBeingSelected HERE!!1 -->
             <button class="btn btn-sm btn-outline-danger" type="submit" name="listItemBeingSelected" value=<%= newItem.id %>>Delete</button>
