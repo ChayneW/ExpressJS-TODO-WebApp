@@ -16,24 +16,19 @@
   <div class="my-3 p-3 bg-body rounded shadow-sm"> <!--my-3 p-3 bg-body rounded shadow-sm -->
       <h1 class="border-bottom"><%= listTitle %> List:</h1> 
   
-    <!-- FOREACH LOOP EJS HERE!!! -->
-    <!-- NEWITEMADD HERE!!!! -->
+    <!-- FOREACH LOOP EJS -->
       <% newItemAdd.forEach(function(newItem) { %>
   
-        <!-- DELETE FORM HERE!!!! -->
+        <!-- DELETE FORM  -->
       <form action="/delete" method="post">
-        <div class="d-block"> <!--d-flex pt-3 -->
-        
-    <!-- NEWITEMADD HERE!!!! -->
-        
+        <div class="d-block"> 
+                
         <li> <%= newItem.name %>
           <div class="d-block text-end">
 
-    <!-- listItemBeingSelected HERE!!1 -->
             <button class="btn btn-sm btn-outline-danger" type="submit" name="listItemBeingSelected" value=<%= newItem.id %>>Delete</button>
           </div>
 
-    <!-- hiddenDelListName HERE!!:  -->
         <input type="hidden" name="hiddenDelListName" value="<%= listTitle %>"></input> 
         </li>
         <hr>
@@ -42,12 +37,10 @@
 
     <% }) %>
   
-<!-- NEWITEM VAR HERE!!! -->
       <div class="container-fluid add-div">
       <form class=" " action="/addNote" method="post">
           <input class="form-control me-2" type="text" name="newItem" placeholder="Add item HERE!!" autocomplete="off">
 
-<!-- newItemHomeList LISTTITLE HERE!!! RES-->
           <button class="btn btn-outline-success" type="submit" name="newItemHomeList" value=<%= listTitle %>>Add</button> <!--  -->
       </form>
     </div>

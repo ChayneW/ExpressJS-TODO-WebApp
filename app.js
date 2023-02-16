@@ -78,19 +78,15 @@ checkDB()
 // Home screen:
 
 app.get('/', function(req, res){
-    
-    // home.ejs ->
-    
+        
     custList.find({}, function(err, foundItems) {
         if (err) {
             console.log(err)
         }
         else {
             // forEach loop finding subdocs names:
-            // const cardTitles = foundItems
             console.log('(/) GET for Loop:')
             
-            // let cardsAmount = foundItems.length
             console.log('card amount calculation...')
             console.log(cardsAmount) 
 
@@ -113,10 +109,6 @@ app.get('/', function(req, res){
 // Post for table requests to access:
 app.post('/', function(req, res){
 
-    // home.ejs -> URL -> app.post(/add/CustomCardName..)
-
-    // const cardTot = req.body.cardsHiddenJSON
-
     const cardNameChosen = req.body.hiddenCardName
     
     console.log('tapping into (/) POST card form data...')
@@ -137,14 +129,11 @@ app.post('/', function(req, res){
 //  Access tables through url params:
 app.get('/add/:customListName', function(req, res) {
 
-    // app.post(/) -> URL
-
     console.log('in /add/customListName()')
     console.log(` customListName() req: ${req.params.customListName}`)
 
     const customListName = req.params.customListName
 
-        // switched values to name in home.ejs hiddenCardName
     custList.findOne({name: customListName}, function(err, foundAList) {
 
         if (!err) {
@@ -169,13 +158,10 @@ app.get('/add/:customListName', function(req, res) {
 // create new table:
 app.post('/create', function(req, res) {
 
-    // home.ejs -> type: string, button
-
     console.log('\ntapping into /create...')
 
     console.log(`grabbing text from home input: ${req.body.newTableCreate}`)
 
-    // representation of cards in home as a string == '3'
     console.log(`totalCards from html: ${req.body.cardTotalHidden}`)
 
     // convert string to number;
@@ -183,11 +169,9 @@ app.post('/create', function(req, res) {
     console.log(totalCards)
     console.log(typeof totalCards)
 
-    // type:STRING
     const newTableName = _.capitalize(req.body.newTableCreate)
     console.log(`lodash() kicking in: ${newTableName}\n`)
 
-    // string conversion to add dash:
     const adjCardNameChosen = newTableName.replace(/\s/g , "-")
     console.log(`using replace funct: ${adjCardNameChosen}\n`)
 
@@ -198,9 +182,7 @@ app.post('/create', function(req, res) {
                 // creating new path and DB:
                 console.log("customListName()... Doesnt exist\n")
                 console.log('foundAList loop:')
-                // console.log(foundAList)
 
-                // #### DB COUNT CHECK HERE: 
                 console.log('checking length within checking for db exists:')
 
                 if (totalCards > 5 ){
@@ -210,7 +192,6 @@ app.post('/create', function(req, res) {
                 }
                 else {
                     console.log('cards at home screen not more than 6.....')
-                    // dynamic table creation
                 
                     const list = new custList({
                     name: adjCardNameChosen,
@@ -219,9 +200,7 @@ app.post('/create', function(req, res) {
 
                 list.save()
                 console.log('checking db from /create...')
-                // checkDB()
 
-                // -> /add/:customListName()  string with '-'
                 res.redirect('/add/' + adjCardNameChosen)
                 }
                 
@@ -231,7 +210,6 @@ app.post('/create', function(req, res) {
                 console.log('newTableName()...Exists!\n')
                 console.log(foundAList)
 
-                // json -> list.ejs render
                 res.render('list.ejs', {listTitle: foundAList.name, newItemAdd: foundAList.items})
             }
         }
@@ -243,10 +221,7 @@ app.post('/create', function(req, res) {
 // Post for table to add items to list:
 app.post('/addNote', function(req, res) {
     console.log('entering /addNote()...')
-    
-
-    // ######## cant find tables with spacing inbetween#######
-    
+        
     const hiddenID = req.body.hiddenID
     const itemName = req.body.newItem // input box data
     const newItemProfile = req.body.newItemHomeList // profile of list being added
@@ -255,14 +230,12 @@ app.post('/addNote', function(req, res) {
     // data check:
     console.log(`note written: ${itemName}`)
     console.log(`Profile of item saved: ${newItemProfile}`)
-    // console.log(hiddenID)
     
     // creating new Item doc for MongoDB:
     const itemNew = new custList({
         name: itemName
     })
 
-    // custList.findOne({_id: hiddenID}, function(err, foundList){
     custList.findOne({name: newItemProfile}, function(err, foundList){
 
         if (err) {

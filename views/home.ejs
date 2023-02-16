@@ -1,6 +1,5 @@
 <!doctype html>
 
-<!-- data-bs-theme="dark" -->
 <html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="utf-8">
@@ -13,11 +12,9 @@
   </head>
   <body>
   
-    <!-- style="background-color: #000000"; 0F4C75  -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style="background-color: #1DB9C3"; aria-label="Main navigation">
       <div class="container-fluid">
     
-        <!-- LISTTITLE HERE!!!! Title of pg ex Date...-->
         <a class="navbar-brand" href="/">Dashboard</a>
       </div>
     
@@ -47,23 +44,19 @@
           <div class="create_form_group field">
             <label class="create_form_label" for="name">New TODO:</label>
 
-<!-- newTableCreate HERE!!!! -->
             <input required="" placeholder="Name" class="create_form_field" type="text" name="newTableCreate">  
             
-<!-- cardsHiddenJSON HERE!!! -->
             <input type="hidden" name="cardTotalHidden" value="<%=cardsTotal%>"></input>
           </div>  
           </div>
         </div>
 
         <div>
-<!-- newTableAdded HERE!!:  type:STRING -> /create -->
             <button id='create-button' class="btn btn-outline-success" type="submit" name="newTableAdded">create</button>
         </form>  
       </div>
     </div>
 
-    <!-- CARD TEST 3 Magic orange -->
       <% cardItem.forEach(function(newCardNameItem){ %>
 
         <div class="request-box d-flex">
@@ -71,7 +64,6 @@
           <div class="col-md-4 card-test-3">
             <div class="card-body card-test-3-info">
 
-<!-- newCardNameItem LOOP HERE!!!! -->
               <h5 class="title"><%= newCardNameItem.name %></h5>
               
               
